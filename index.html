@@ -1,59 +1,95 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Selinas Geburtstagsüberraschung 🎁</title>
 <style>
-*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:system-ui,-apple-system,sans-serif;background:linear-gradient(135deg,#fff0f7,#f0edff,#edfaff);color:#2b2535;display:flex;justify-content:center;align-items:center;overflow-x:hidden}.card{width:min(92vw,600px);margin:25px;padding:38px 26px;text-align:center;background:#ffffffd9;backdrop-filter:blur(14px);border-radius:30px;box-shadow:0 25px 70px #4d3b7025}.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-weight:800;font-size:.76rem;opacity:.55}h1{font-size:clamp(2rem,9vw,3.5rem);margin:8px 0 12px}p{line-height:1.55;font-size:1.06rem}.hidden{display:none}.btn{border:0;border-radius:999px;padding:15px 25px;background:#7650ee;color:white;font-weight:800;font-size:1rem;cursor:pointer;box-shadow:0 12px 28px #7650ee45}.btn:hover{transform:translateY(-2px)}.count{font-size:3.5rem;font-weight:900;margin:12px 0}.hint{font-size:.9rem;opacity:.55}.envelope{width:270px;height:180px;margin:25px auto;position:relative;cursor:pointer;filter:drop-shadow(0 15px 15px #49376b22)}.env-body{position:absolute;inset:0;background:#d8c8ff;border-radius:8px;overflow:hidden}.env-body:before,.env-body:after{content:"";position:absolute;bottom:0;width:0;height:0;border-style:solid}.env-body:before{left:0;border-width:90px 135px 0;border-color:#c6b0fa transparent transparent}.env-body:after{right:0;border-width:0 135px 90px;border-color:transparent #b99df3 transparent transparent}.flap{position:absolute;z-index:3;top:0;left:0;width:0;height:0;border-left:135px solid transparent;border-right:135px solid transparent;border-top:100px solid #eadfff;transform-origin:top;transition:.8s}.letter{position:absolute;z-index:2;left:25px;top:30px;width:220px;height:125px;background:white;border-radius:7px;padding:20px;transition:.8s;box-shadow:0 5px 15px #4b397015}.envelope.open .flap{transform:rotateX(180deg)}.envelope.open .letter{transform:translateY(-95px)}.restaurant-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:22px 0}.restaurant{padding:18px 10px;border:2px solid #e4ddfa;border-radius:18px;background:#faf9ff;cursor:pointer;font-size:1.8rem}.restaurant:hover{border-color:#7650ee;transform:scale(1.02)}.restaurant b{display:block;font-size:1rem;margin-top:6px}.result{padding:20px;border-radius:20px;background:#f8f5ff;margin:20px 0}.again{background:none;color:#7650ee;box-shadow:none}.confetti{position:fixed;top:-20px;z-index:10;animation:fall 3.5s linear forwards}@keyframes fall{to{transform:translate3d(var(--x),110vh,0) rotate(720deg)}}.pulse{animation:pulse 1.3s infinite}@keyframes pulse{50%{transform:scale(1.06)}}small{opacity:.55}
+:root{--rose:#8c2850;--pink:#ed5c91;--cream:#fff8f2;--ink:#2c2030}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wrap{max-width:1050px;margin:auto}.hero{position:relative;overflow:hidden;background:#f2d2c9}.hero img{display:block;width:100%;height:auto}.intro{text-align:center;padding:55px 20px 35px}.intro h1{font-size:clamp(2.4rem,7vw,5rem);margin:.1em 0;color:var(--rose)}.intro p{font-size:1.15rem;line-height:1.6}
+.panel{margin:25px auto;padding:35px 25px;border-radius:28px;background:#fff;box-shadow:0 20px 55px #54233a18}.timer{font-size:clamp(3rem,10vw,6rem);font-weight:900;color:var(--rose);text-align:center;letter-spacing:.04em}.center{text-align:center}.btn{border:0;border-radius:999px;padding:15px 25px;background:var(--pink);color:#fff;font-weight:800;font-size:1rem;cursor:pointer;box-shadow:0 10px 25px #ed5c9140}.btn:hover{transform:translateY(-2px)}
+.envelope{width:min(330px,80vw);height:215px;margin:25px auto;position:relative;cursor:pointer;perspective:900px}.env{position:absolute;inset:0;background:#d8a77e;border-radius:10px;box-shadow:0 18px 35px #4c2b241f}.flap{position:absolute;z-index:3;left:0;top:0;width:0;height:0;border-left:50% solid transparent;border-right:50% solid transparent;border-top:115px solid #e7bd95;transform-origin:top;transition:.8s}.letter{position:absolute;z-index:2;left:9%;top:25px;width:82%;height:155px;background:white;border-radius:8px;padding:25px;transition:.8s;box-shadow:0 5px 18px #44271820}.envelope.open .flap{transform:rotateX(180deg)}.envelope.open .letter{transform:translateY(-105px)}.hidden{display:none}
+.choices{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.choice{border:0;border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 10px 28px #54233a16;cursor:pointer;padding:0;transition:.2s}.choice:hover{transform:translateY(-5px)}.choice img{width:100%;display:block;aspect-ratio:1/1;object-fit:cover}.choice span{display:block;padding:15px 8px;font-size:1.1rem;font-weight:850}.selected{outline:4px solid var(--pink)}
+.result{margin:25px auto 0;padding:25px;border-radius:22px;background:#fff1f6;text-align:center;font-size:1.2rem}.final{padding:0 0 60px}.final img{width:100%;display:block;border-radius:28px}.small{opacity:.6;font-size:.9rem}
+@media(max-width:720px){.choices{grid-template-columns:1fr 1fr}.panel{margin:18px 12px}.intro{padding-top:35px}}
+@media(max-width:430px){.choices{gap:9px}.choice span{font-size:.95rem}}
 </style>
 </head>
 <body>
-<main class="card">
-<section id="countdown">
-<div class="eyebrow">Eine geheime Nachricht für</div><h1>Selina 💜</h1>
-<p>Deine Geburtstagsüberraschung wartet bereits… 🎁</p>
-<div class="count" id="timer">03:00</div>
-<p class="hint">Nur noch ein kleines bisschen Geduld… 👀</p>
-<button class="btn" onclick="skip()">Ich kann nicht warten 😇</button>
-</section>
+<div class="wrap">
+  <section class="hero"><img src="selina-collage.png" alt="Selina – Geburtstagsüberraschung"></section>
 
-<section id="envelope" class="hidden">
-<div class="eyebrow">23 Jahre – Zeit für eine Überraschung</div><h1>Post für Selina 💌</h1>
-<p>Du hast einen persönlichen Geburtstagsbrief bekommen.</p>
-<div class="envelope" onclick="openEnvelope(this)">
-<div class="env-body"></div><div class="letter">💜<br><b>Für Selina</b><br><small>Klick mich!</small></div><div class="flap"></div>
-</div>
-<p class="hint">Auf den Umschlag tippen</p>
-</section>
+  <section class="intro">
+    <div>💌 EINE KLEINE ÜBERRASCHUNG FÜR DICH</div>
+    <h1>Selina 💜</h1>
+    <p>23 Jahre muss man schließlich gebührend feiern!<br>
+    Aber was könnte sich in diesem Paket verstecken? 👀</p>
+  </section>
 
-<section id="voucher" class="hidden">
-<div class="eyebrow">Dein Geburtstagsgeschenk</div><h1>Du bist eingeladen! 🎉</h1>
-<p>Und jetzt kommt der wichtigste Teil:</p>
-<div class="result"><strong>🍽️ Ein gemeinsames Essen</strong><br><br>Du darfst entscheiden, worauf wir Lust haben.</div>
-<h2>Wohin gehen wir? 🤔</h2>
-<p>Wähle dein Restaurant – zumindest schon mal die Richtung:</p>
-<div class="restaurant-grid">
-<div class="restaurant" onclick="choose('🍕 Pizza','Pizza 🍕')">🍕<b>Pizza</b></div>
-<div class="restaurant" onclick="choose('🍣 Sushi','Sushi 🍣')">🍣<b>Sushi</b></div>
-<div class="restaurant" onclick="choose('🍔 Burger','Burger 🍔')">🍔<b>Burger</b></div>
-<div class="restaurant" onclick="choose('🥩 Steak','Steak 🥩')">🥩<b>Steak</b></div>
+  <section class="panel center" id="countdownPanel">
+    <div>⏳ NOCH EIN KLEINER MOMENT …</div>
+    <div class="timer" id="timer">00:30</div>
+    <p>bis dein Geschenk geöffnet werden kann.</p>
+    <button class="btn" onclick="skipCountdown()">Ich kann nicht warten! 😇</button>
+  </section>
+
+  <section class="panel center hidden" id="envelopePanel">
+    <h2>💌 Post für Selina</h2>
+    <p>Klick auf den Umschlag, um dein Geschenk zu öffnen.</p>
+    <div class="envelope" id="envelope" onclick="openEnvelope()">
+      <div class="env"></div>
+      <div class="letter">💜<br><strong>Für Selina</strong><br><small>23 Jahre 🎉</small></div>
+      <div class="flap"></div>
+    </div>
+  </section>
+
+  <section class="panel hidden" id="voucher">
+    <div class="center">
+      <div>🎉 DEIN GEBURTSTAGSGUTSCHEIN</div>
+      <h2 style="font-size:2.2rem;color:var(--rose)">Du bist eingeladen!</h2>
+      <p>🍽️ Ein gemeinsames Essen – nur für uns.<br>Das Restaurant darfst <strong>du</strong> aussuchen.</p>
+    </div>
+
+    <h2 class="center">Worauf hast du heute Lust? 🤔</h2>
+    <p class="center">Wähle deine Richtung – die endgültige Entscheidung treffen wir gemeinsam.</p>
+
+    <div class="choices">
+      <button class="choice" onclick="choose(this,'Burger 🍔')">
+        <img src="selina-collage.png" alt="Burger"><span>🍔 Burger</span>
+      </button>
+      <button class="choice" onclick="choose(this,'Pizza 🍕')">
+        <img src="selina-collage.png" alt="Pizza"><span>🍕 Pizza</span>
+      </button>
+      <button class="choice" onclick="choose(this,'Asiatisch 🥢')">
+        <img src="selina-collage.png" alt="Asiatisch"><span>🥢 Asiatisch</span>
+      </button>
+      <button class="choice" onclick="choose(this,'Griechisch 🇬🇷')">
+        <img src="selina-collage.png" alt="Griechisch"><span>🇬🇷 Griechisch</span>
+      </button>
+    </div>
+    <div id="result"></div>
+    <div class="center" style="margin-top:28px">
+      <p>Restaurant? Du suchst aus.<br>Termin? Finden wir.<br>Bezahlen? <strong>Geht auf mich. 😉</strong></p>
+      <p>Und ja … ich komme natürlich mit. Pech gehabt. 😂</p>
+      <p class="small">Gültig für Selina · 23. Geburtstag · ein gemeinsames Essen</p>
+    </div>
+  </section>
+
+  <section class="final"><img src="selina-collage.png" alt="Selina mit ihrem Gutschein"></section>
 </div>
-<div id="choice"></div>
-<p>Restaurant? Du suchst aus.<br>Termin? Finden wir.<br>Bezahlen? <b>Geht auf mich. 😉</b></p>
-<p>Und ja… ich komme natürlich mit. Pech gehabt. 😂</p>
-<small>Gültig für Selina · 23. Geburtstag · gemeinsames Essen</small>
-</section>
-</main>
+
 <script>
-let end=Date.now()+180000;
-function tick(){let s=Math.max(0,Math.ceil((end-Date.now())/1000));let m=String(Math.floor(s/60)).padStart(2,'0'),x=String(s%60).padStart(2,'0');timer.textContent=m+':'+x;if(s===0)showEnvelope()}
-function skip(){showEnvelope()}function showEnvelope(){clearInterval(int);countdown.classList.add('hidden');envelope.classList.remove('hidden');confetti()}
-const int=setInterval(tick,250);tick();
-function openEnvelope(el){el.classList.add('open');setTimeout(()=>{envelope.classList.add('hidden');voucher.classList.remove('hidden');confetti()},1100)}
-function choose(name,emoji){choice.innerHTML='<div class="result pulse">🥳 Gute Wahl! <b>'+name+'</b> klingt verdächtig lecker.<br><br><button class="btn" onclick="finalChoice()">Diese Richtung nehme ich! ✨</button></div>'}
-function finalChoice(){choice.innerHTML='<div class="result">🎉 <b>Deal!</b><br>Jetzt müssen wir nur noch Restaurant und Termin ausmachen. 😎</div>';confetti()}
-function confetti(){['🎉','✨','💜','🎈','🥳','🍽️'].forEach((s,i)=>{for(let j=0;j<8;j++){let e=document.createElement('span');e.className='confetti';e.textContent=s;e.style.left=Math.random()*100+'vw';e.style.fontSize=14+Math.random()*15+'px';e.style.animationDelay=Math.random()+ 's';e.style.setProperty('--x',(Math.random()*200-100)+'px');document.body.appendChild(e);setTimeout(()=>e.remove(),5000)}})}
+let remaining=30, interval;
+const timer=document.getElementById('timer');
+function update(){timer.textContent='00:'+String(remaining).padStart(2,'0')}
+function start(){interval=setInterval(()=>{remaining--;update();if(remaining<=0){clearInterval(interval);showEnvelope()}},1000)}
+function skipCountdown(){clearInterval(interval);showEnvelope()}
+function showEnvelope(){document.getElementById('countdownPanel').classList.add('hidden');document.getElementById('envelopePanel').classList.remove('hidden');document.getElementById('envelopePanel').scrollIntoView({behavior:'smooth',block:'center'});confetti()}
+function openEnvelope(){const e=document.getElementById('envelope');if(e.classList.contains('open'))return;e.classList.add('open');setTimeout(()=>{document.getElementById('envelopePanel').classList.add('hidden');document.getElementById('voucher').classList.remove('hidden');document.getElementById('voucher').scrollIntoView({behavior:'smooth'});confetti()},1000)}
+function choose(el,name){document.querySelectorAll('.choice').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');document.getElementById('result').innerHTML='<div class="result">🥳 <strong>'+name+'</strong>? Sehr gute Entscheidung!<br><small>Jetzt müssen wir nur noch ein Restaurant und einen Termin finden. 😎</small></div>';confetti()}
+function confetti(){const a=['🎉','✨','💜','🎈','🥳','🍽️'];for(let i=0;i<35;i++){let e=document.createElement('span');e.textContent=a[Math.floor(Math.random()*a.length)];e.style.position='fixed';e.style.left=Math.random()*100+'vw';e.style.top='-30px';e.style.zIndex=20;e.style.fontSize=15+Math.random()*18+'px';e.style.transition='transform 3s linear,opacity 3s';document.body.appendChild(e);requestAnimationFrame(()=>{e.style.transform='translateY(110vh) rotate(600deg)';e.style.opacity='0'});setTimeout(()=>e.remove(),3200)}}
+update();start();
 </script>
 </body>
 </html>
