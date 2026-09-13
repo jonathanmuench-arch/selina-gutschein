@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Selinas Geburtstagsüberraschung 🎁</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:system-ui,-apple-system,sans-serif;background:linear-gradient(135deg,#fff0f7,#f0edff,#edfaff);color:#2b2535;display:flex;justify-content:center;align-items:center;overflow-x:hidden}.card{width:min(92vw,600px);margin:25px;padding:38px 26px;text-align:center;background:#ffffffd9;backdrop-filter:blur(14px);border-radius:30px;box-shadow:0 25px 70px #4d3b7025}.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-weight:800;font-size:.76rem;opacity:.55}h1{font-size:clamp(2rem,9vw,3.5rem);margin:8px 0 12px}p{line-height:1.55;font-size:1.06rem}.hidden{display:none}.btn{border:0;border-radius:999px;padding:15px 25px;background:#7650ee;color:white;font-weight:800;font-size:1rem;cursor:pointer;box-shadow:0 12px 28px #7650ee45}.btn:hover{transform:translateY(-2px)}.count{font-size:3.5rem;font-weight:900;margin:12px 0}.hint{font-size:.9rem;opacity:.55}.envelope{width:270px;height:180px;margin:25px auto;position:relative;cursor:pointer;filter:drop-shadow(0 15px 15px #49376b22)}.env-body{position:absolute;inset:0;background:#d8c8ff;border-radius:8px;overflow:hidden}.env-body:before,.env-body:after{content:"";position:absolute;bottom:0;width:0;height:0;border-style:solid}.env-body:before{left:0;border-width:90px 135px 0;border-color:#c6b0fa transparent transparent}.env-body:after{right:0;border-width:0 135px 90px;border-color:transparent #b99df3 transparent transparent}.flap{position:absolute;z-index:3;top:0;left:0;width:0;height:0;border-left:135px solid transparent;border-right:135px solid transparent;border-top:100px solid #eadfff;transform-origin:top;transition:.8s}.letter{position:absolute;z-index:2;left:25px;top:30px;width:220px;height:125px;background:white;border-radius:7px;padding:20px;transition:.8s;box-shadow:0 5px 15px #4b397015}.envelope.open .flap{transform:rotateX(180deg)}.envelope.open .letter{transform:translateY(-95px)}.restaurant-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:22px 0}.restaurant{padding:18px 10px;border:2px solid #e4ddfa;border-radius:18px;background:#faf9ff;cursor:pointer;font-size:1.8rem}.restaurant:hover{border-color:#7650ee;transform:scale(1.02)}.restaurant b{display:block;font-size:1rem;margin-top:6px}.result{padding:20px;border-radius:20px;background:#f8f5ff;margin:20px 0}.again{background:none;color:#7650ee;box-shadow:none}.confetti{position:fixed;top:-20px;z-index:10;animation:fall 3.5s linear forwards}@keyframes fall{to{transform:translate3d(var(--x),110vh,0) rotate(720deg)}}.pulse{animation:pulse 1.3s infinite}@keyframes pulse{50%{transform:scale(1.06)}}small{opacity:.55}
+</style>
+</head>
+<body>
+<main class="card">
+<section id="countdown">
+<div class="eyebrow">Eine geheime Nachricht für</div><h1>Selina 💜</h1>
+<p>Deine Geburtstagsüberraschung wartet bereits… 🎁</p>
+<div class="count" id="timer">03:00</div>
+<p class="hint">Nur noch ein kleines bisschen Geduld… 👀</p>
+<button class="btn" onclick="skip()">Ich kann nicht warten 😇</button>
+</section>
+
+<section id="envelope" class="hidden">
+<div class="eyebrow">23 Jahre – Zeit für eine Überraschung</div><h1>Post für Selina 💌</h1>
+<p>Du hast einen persönlichen Geburtstagsbrief bekommen.</p>
+<div class="envelope" onclick="openEnvelope(this)">
+<div class="env-body"></div><div class="letter">💜<br><b>Für Selina</b><br><small>Klick mich!</small></div><div class="flap"></div>
+</div>
+<p class="hint">Auf den Umschlag tippen</p>
+</section>
+
+<section id="voucher" class="hidden">
+<div class="eyebrow">Dein Geburtstagsgeschenk</div><h1>Du bist eingeladen! 🎉</h1>
+<p>Und jetzt kommt der wichtigste Teil:</p>
+<div class="result"><strong>🍽️ Ein gemeinsames Essen</strong><br><br>Du darfst entscheiden, worauf wir Lust haben.</div>
+<h2>Wohin gehen wir? 🤔</h2>
+<p>Wähle dein Restaurant – zumindest schon mal die Richtung:</p>
+<div class="restaurant-grid">
+<div class="restaurant" onclick="choose('🍕 Pizza','Pizza 🍕')">🍕<b>Pizza</b></div>
+<div class="restaurant" onclick="choose('🍣 Sushi','Sushi 🍣')">🍣<b>Sushi</b></div>
+<div class="restaurant" onclick="choose('🍔 Burger','Burger 🍔')">🍔<b>Burger</b></div>
+<div class="restaurant" onclick="choose('🥩 Steak','Steak 🥩')">🥩<b>Steak</b></div>
+</div>
+<div id="choice"></div>
+<p>Restaurant? Du suchst aus.<br>Termin? Finden wir.<br>Bezahlen? <b>Geht auf mich. 😉</b></p>
+<p>Und ja… ich komme natürlich mit. Pech gehabt. 😂</p>
+<small>Gültig für Selina · 23. Geburtstag · gemeinsames Essen</small>
+</section>
+</main>
+<script>
+let end=Date.now()+180000;
+function tick(){let s=Math.max(0,Math.ceil((end-Date.now())/1000));let m=String(Math.floor(s/60)).padStart(2,'0'),x=String(s%60).padStart(2,'0');timer.textContent=m+':'+x;if(s===0)showEnvelope()}
+function skip(){showEnvelope()}function showEnvelope(){clearInterval(int);countdown.classList.add('hidden');envelope.classList.remove('hidden');confetti()}
+const int=setInterval(tick,250);tick();
+function openEnvelope(el){el.classList.add('open');setTimeout(()=>{envelope.classList.add('hidden');voucher.classList.remove('hidden');confetti()},1100)}
+function choose(name,emoji){choice.innerHTML='<div class="result pulse">🥳 Gute Wahl! <b>'+name+'</b> klingt verdächtig lecker.<br><br><button class="btn" onclick="finalChoice()">Diese Richtung nehme ich! ✨</button></div>'}
+function finalChoice(){choice.innerHTML='<div class="result">🎉 <b>Deal!</b><br>Jetzt müssen wir nur noch Restaurant und Termin ausmachen. 😎</div>';confetti()}
+function confetti(){['🎉','✨','💜','🎈','🥳','🍽️'].forEach((s,i)=>{for(let j=0;j<8;j++){let e=document.createElement('span');e.className='confetti';e.textContent=s;e.style.left=Math.random()*100+'vw';e.style.fontSize=14+Math.random()*15+'px';e.style.animationDelay=Math.random()+ 's';e.style.setProperty('--x',(Math.random()*200-100)+'px');document.body.appendChild(e);setTimeout(()=>e.remove(),5000)}})}
+</script>
+</body>
+</html>
